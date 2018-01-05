@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CreateCompanyControllerDelegate {
     func didAddCompany(company: Company)
@@ -43,15 +44,23 @@ class CreateCompanyController: UIViewController {
     }
     
     @objc func handleSave() {
-//        dismiss(animated: true) {
-//            guard let name = self.nameTextField.text else { return }
-//
-//            let company = Company(name: name, founded: Date())
-//
-//            self.delegate?.didAddCompany(company: company)
-//        }
     
-
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+  
+        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        
+        guard let name = self.nameTextField.text else { return }
+        company.setValue(name, forKey: "name")
+        
+        do {
+           try context.save()
+            
+            dismiss(animated: true, completion: {
+                self.delegate?.didAddCompany(company: company as! Company)
+            })
+        }catch let saveErr {
+            print("Failed to save Company: ", saveErr)
+        }
     }
     
     @objc func handleCancel() {

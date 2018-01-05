@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
     func didAddCompany(company: Company) {
@@ -15,6 +16,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
         let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
+
     }
     
     
@@ -23,6 +25,8 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        fetchCompanies()
         view.backgroundColor = .white
         
         navigationItem.title = "Companies"
@@ -37,6 +41,25 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
         
         
+    }
+    
+    private func fetchCompanies() {
+
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+        
+        do {
+            let companies = try context.fetch(fetchRequest)
+            companies.forEach({ (company) in
+                print(company.name ?? "")
+            })
+        
+            self.companies = companies
+            self.tableView.reloadData()
+        }catch let fetchErr {
+            print("Failed to fetch companies: ", fetchErr )
+        }
+       
     }
     
     @objc func handleAddCompany() {
