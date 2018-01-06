@@ -112,12 +112,12 @@
 				39FFB2E81FFF7C3B00366E52 /* Company.swift */,
 				39FFB2EB1FFF7C4E00366E52 /* CreateCompanyController.swift */,
 				39FFB2EA1FFF7C4E00366E52 /* UIColor+theme.swift */,
+				39FFB2F31FFF7F0800366E52 /* Model.xcdatamodeld */,
+				39FFB2F71FFF8A9700366E52 /* CoreDataManager.swift */,
 				39FFB2BC1FFF7B8000366E52 /* Main.storyboard */,
 				39FFB2BF1FFF7B8000366E52 /* Assets.xcassets */,
 				39FFB2C11FFF7B8000366E52 /* LaunchScreen.storyboard */,
 				39FFB2C41FFF7B8000366E52 /* Info.plist */,
-				39FFB2F31FFF7F0800366E52 /* Model.xcdatamodeld */,
-				39FFB2F71FFF8A9700366E52 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
