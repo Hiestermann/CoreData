@@ -13,10 +13,7 @@
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employee" inverseName="company" inverseEntity="Employee" syncable="YES"/>
     </entity>
     <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="address" inverseEntity="Address" syncable="YES"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="employees" inverseEntity="Company" syncable="YES"/>
@@ -29,8 +26,8 @@
     </entity>
     <elements>
         <element name="Address" positionX="124" positionY="54" width="128" height="105"/>
-        <element name="Company" positionX="-362" positionY="81" width="128" height="103"/>
-        <element name="Employee" positionX="-117" positionY="105" width="128" height="165"/>
+        <element name="Company" positionX="-362" positionY="81" width="128" height="105"/>
+        <element name="Employee" positionX="-117" positionY="105" width="128" height="120"/>
         <element name="EmployeeInformation" positionX="232" positionY="173" width="128" height="88"/>
     </elements>
 </model>

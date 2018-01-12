@@ -72,7 +72,8 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        setupCancelButton()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
         view.backgroundColor = .darkblue
         
@@ -166,23 +167,10 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
             print("Failed to save Company: ", saveErr)
         }
     }
-    
-    @objc func handleCancel() {
-        dismiss(animated: true, completion: nil)
-    }
   
     private func setupUI() {
         
-        let lightBlueBackgroundView = UIView()
-        lightBlueBackgroundView.backgroundColor = .lightBlue
-        lightBlueBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(lightBlueBackgroundView)
-        
-        lightBlueBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        lightBlueBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        lightBlueBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBlueBackgroundView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        let lightBlueBackgroundView = setupLightBlueBackground(height: 350)
         
         view.addSubview(companyImageView)
         companyImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
